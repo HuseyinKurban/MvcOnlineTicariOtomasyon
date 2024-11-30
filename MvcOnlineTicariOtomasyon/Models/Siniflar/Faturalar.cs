@@ -9,6 +9,7 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
 {
     public class Faturalar
     {
+        [Key]
         public int Faturaid { get; set; }
         [Column(TypeName = "Char")]
         [StringLength(1)]
