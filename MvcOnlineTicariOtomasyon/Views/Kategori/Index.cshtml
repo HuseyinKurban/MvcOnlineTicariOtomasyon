@@ -1,7 +1,9 @@
-﻿
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model List<Kategori>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
+    int count = 0;
 }
 
 
@@ -9,10 +11,19 @@
     <tr>
         <th>ID</th>
         <th>Kategori Adı</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
     </tr>
-    <tr>
-        <td>1</td>
-        <td>beyaz eşya</td>
-    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.KategoriAd</td>
+            <td><a href="/Kategori/KategoriGetir/@item.Kategoriid" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Kategori/KategoriSil/@item.Kategoriid" class="btn btn-danger">Sil</a></td>
+        </tr>
+    }
+
 </table>
-<button class="btn btn-primary">Yeni Kategori</button>
+<a href="/Kategori/KategoriEkle" class="btn btn-primary">Kategori Ekle</a>
