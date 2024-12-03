@@ -34,8 +34,8 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         [HttpPost]
         public ActionResult YeniUrun(Urun p)
         {
-            c.Uruns.Add(p);
             p.Durum = true;
+            c.Uruns.Add(p);
             c.SaveChanges();
             return RedirectToAction("Index");
         }

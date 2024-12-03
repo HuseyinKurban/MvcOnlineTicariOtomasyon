@@ -1,18 +1,21 @@
 ﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
 @using PagedList
 @using PagedList.Mvc
-@model PagedList.IPagedList<Kategori>
+@model PagedList.IPagedList<Cariler>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
     int count = (Model.PageNumber - 1) * Model.PageSize;
 }
 
-
-<table class="table table-bordered" style="margin-top:25px;">
+<table class="table table-striped" style="margin-top:25px;">
     <tr>
         <th>#</th>
-        <th>Kategori Adı</th>
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>Şehir</th>
+        <th>Mail</th>
+        <th>Detaylar</th>
         <th>Güncelle</th>
         <th>Sil</th>
     </tr>
@@ -21,9 +24,13 @@
         count++;
         <tr>
             <td>@count</td>
-            <td>@item.KategoriAd</td>
-            <td><a href="/Kategori/KategoriGetir/@item.Kategoriid" class="btn btn-success">Güncelle</a></td>
-            <td><a href="/Kategori/KategoriSil/@item.Kategoriid" class="btn btn-danger">Sil</a></td>
+            <td>@item.CariAd</td>
+            <td>@item.CariSoyad</td>
+            <td>@item.CariSehir</td>
+            <td>@item.CariMail</td>
+            <td><a href="#" class="btn btn-info">Satış Geçmişi</a></td>
+            <td><a href="#" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Cari/CariSil/@item.Cariid" class="btn btn-danger">Sil</a></td>
         </tr>
     }
 
@@ -36,4 +43,5 @@
      MaximumPageNumbersToDisplay = 3 // Sadece 3 sayfa göster
 
 })
-<a href="/Kategori/KategoriEkle" class="btn btn-primary">Kategori Ekle</a>
+
+<a href="/Cari/YeniCari" class="btn btn-primary">Cari Ekle</a>

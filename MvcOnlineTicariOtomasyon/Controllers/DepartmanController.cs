@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList.Mvc;
+using PagedList;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
@@ -12,9 +14,9 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         // GET: Departman
         Context c = new Context();
 
-        public ActionResult Index()
+        public ActionResult Index(int sayfa = 1)
         {
-            var values = c.Departmans.Where(x => x.Durum == true).ToList();
+            var values = c.Departmans.Where(x => x.Durum == true).ToList().ToPagedList(sayfa, 10);
             return View(values);
         }
 
@@ -26,8 +28,8 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         [HttpPost]
         public ActionResult DepartmanEkle(Departman d)
         {
-            c.Departmans.Add(d);
             d.Durum = true;
+            c.Departmans.Add(d);
             c.SaveChanges();
             return RedirectToAction("Index");
         }
