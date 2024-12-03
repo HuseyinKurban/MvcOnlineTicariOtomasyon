@@ -28,8 +28,8 @@
             <td>@item.CariSoyad</td>
             <td>@item.CariSehir</td>
             <td>@item.CariMail</td>
-            <td><a href="#" class="btn btn-info">Satış Geçmişi</a></td>
-            <td><a href="#" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Cari/MusteriSatis/@item.Cariid" class="btn btn-info">Satış Geçmişi</a></td>
+            <td><a href="/Cari/CariGetir/@item.Cariid" class="btn btn-success">Güncelle</a></td>
             <td><a href="/Cari/CariSil/@item.Cariid" class="btn btn-danger">Sil</a></td>
         </tr>
     }
@@ -40,7 +40,7 @@
 {
 
     LiElementClasses = new List<string> { "page-link" },
-     MaximumPageNumbersToDisplay = 3 // Sadece 3 sayfa göster
+     MaximumPageNumbersToDisplay = 3 
 
 })
 
