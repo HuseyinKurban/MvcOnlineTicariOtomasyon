@@ -1,4 +1,5 @@
 ﻿using MvcOnlineTicariOtomasyon.Models.Siniflar;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,9 @@ namespace MvcOnlineTicariOtomasyon.Controllers
 
         Context c = new Context();
 
-        public ActionResult Index()
+        public ActionResult Index(int sayfa=1)
         {
-            var values = c.Uruns.Where(x => x.Durum == true).ToList();
+            var values = c.Uruns.Where(x => x.Durum == true).ToList().ToPagedList(sayfa,10);
             return View(values);
         }
 

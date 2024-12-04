@@ -1,0 +1,52 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<SatisHareket>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    int count = (Model.PageNumber - 1) * Model.PageSize;
+}
+
+<table class="table table-striped" style="margin-top:25px;">
+    <tr>
+        <th>#</th>
+        <th>Ürün</th>
+        <th>Cari</th>
+        <th>Personel</th>
+        <th>Adet</th>
+        <th>Fiyat</th>
+        <th>Toplam Tutar</th>
+        <th>Tarih</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.Urun.UrunAd</td>
+            <td>@item.Cariler.CariAd @item.Cariler.CariSoyad</td>
+            <td>@item.Personel.PersonelAd @item.Personel.PersonelSoyad</td>
+            <td>@item.Adet</td>
+            <td>@item.Fiyat</td>
+            <td>@item.ToplamTutar</td>
+            <td>@item.Tarih.ToShortDateString()</td>
+            <td><a href="/Satis/SatisGetir/@item.Satisid" class="btn btn-success">Güncelle</a></td>
+            <td><a href="#" class="btn btn-info">Detaylar</a></td>
+        </tr>
+    }
+
+</table>
+
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }), new PagedListRenderOptions
+{
+
+    LiElementClasses = new List<string> { "page-link" },
+     MaximumPageNumbersToDisplay = 3
+
+})
+
+<a href="/Satis/YeniSatis" class="btn btn-primary">Satis Ekle</a>
+

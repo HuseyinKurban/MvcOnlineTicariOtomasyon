@@ -1,0 +1,48 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@using PagedList.Mvc
+@using PagedList
+@model PagedList.IPagedList<Personel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    int count = (Model.PageNumber - 1) * Model.PageSize;
+}
+
+<table class="table table-striped" style="margin-top:25px;">
+    <tr>
+        <th>#</th>
+        <th>Adı</th>
+        <th>Soyadı</th>
+        <th>Departman</th>
+        <th>Görsel</th>
+        <th>Satışlar</th>
+        <th>Güncelle</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.PersonelAd</td>
+            <td>@item.PersonelSoyad</td>
+            <td>@item.Departman.DepartmanAd</td>
+            <td>@item.PersonelGorsel</td>
+            <td><a href="/Departman/DepartmanPersonelSatis/@item.Personelid" class="btn btn-info">Satışlar</a></td>
+            <td><a href="/Personel/PersonelGetir/@item.Personelid" class="btn btn-success">Güncelle</a></td>
+
+        </tr>
+    }
+
+</table>
+
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }), new PagedListRenderOptions
+{
+
+    LiElementClasses = new List<string> { "page-link" },
+     MaximumPageNumbersToDisplay = 3
+
+})
+
+<a href="/Personel/PersonelEkle" class="btn btn-primary">Personel Ekle</a>

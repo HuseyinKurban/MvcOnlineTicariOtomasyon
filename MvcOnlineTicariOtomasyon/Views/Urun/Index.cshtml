@@ -1,9 +1,11 @@
 ﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
-@model List<Urun>
+@using PagedList.Mvc
+@using PagedList
+@model PagedList.IPagedList<Urun>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
-    int count = 0;
+    int count = (Model.PageNumber - 1) * Model.PageSize;
 }
 
 <table class="table table-bordered" style="margin-top:20px;">
@@ -35,8 +37,17 @@
             <td><a href="/Urun/UrunSil/@item.Urunid" class="btn btn-danger">Sil</a></td>
         </tr>
     }
-    
+
 </table>
 <br />
+
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }), new PagedListRenderOptions
+{
+
+    LiElementClasses = new List<string> { "page-link" },
+     MaximumPageNumbersToDisplay = 3
+
+})
+
 <a href="/Urun/YeniUrun" class="btn btn-primary">Ürün Ekle</a>
 
