@@ -1,0 +1,75 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model List<Faturalar>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    int count = 0;
+}
+
+<br />
+
+<table id="tbl1" class="table table-bordered" style="margin-top:25px;">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Seri No</th>
+            <th>Sıra No</th>
+            <th>Vergi Dairesi</th>
+            <th>Tarih</th>
+            <th>Saat</th>
+            <th>Toplam</th>
+            <th>Teslim Eden</th>
+            <th>Teslim Alan</th>
+            <th>Detaylar</th>
+            <th>Güncelle</th>
+
+        </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@item.FaturaSeriNo</td>
+                <td>@item.FaturaSıraNo</td>
+                <td>@item.VergiDairesi</td>
+                <td>@item.Tarih.ToShortDateString()</td>
+                <td>@item.Saat</td>
+                <td>@item.Toplam</td>
+                <td>@item.TeslimEden</td>
+                <td>@item.TeslimAlan</td>
+                <td><a href="/Fatura/FaturaDetay/@item.Faturaid" class="btn btn-info">Detaylar</a></td>
+                <td><a href="/Fatura/FaturaGetir/@item.Faturaid" class="btn btn-success">Güncelle</a></td>
+
+
+            </tr>
+        }
+
+</table>
+
+<a href="/Fatura/FaturaEkle" class="btn btn-primary">Yeni Fatura Girişi</a>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').DataTable({
+        paging: true,         // Enable pagination
+        searching: true,      // Enable search
+        ordering: true,       // Enable sorting
+        responsive: true,     // Enable responsive design
+        lengthMenu: [10, 25, 50, 100], // Show records per page
+        language: {
+            url: 'https://cdn.datatables.net/plug-ins/1.10.21/i18n/Turkish.json' // Optional: Add Turkish language support
+        }
+    });
+</script>
