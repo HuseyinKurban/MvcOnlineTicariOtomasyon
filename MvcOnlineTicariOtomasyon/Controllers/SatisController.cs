@@ -1,7 +1,7 @@
 ﻿using MvcOnlineTicariOtomasyon.Models.Siniflar;
-using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -14,9 +14,9 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         // GET: Satis
         Context c = new Context();
 
-        public ActionResult Index(int sayfa = 1)
+        public ActionResult Index()
         {
-            var values = c.SatisHarekets.ToList().ToPagedList(sayfa, 10);
+            var values = c.SatisHarekets.ToList();
             return View(values);
         }
         [HttpGet]
@@ -63,7 +63,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             var urun = c.Uruns.Where(x => x.Urunid == s.Urunid).FirstOrDefault();
             fiyat = urun.SatisFiyat;
 
-            
+
             toplamt = adet * fiyat;
             s.ToplamTutar = toplamt;
             s.Fiyat = fiyat;
@@ -104,7 +104,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             ViewBag.urun = deger3;
 
             var deger = c.SatisHarekets.Find(id);
-            return View("SatisGetir",deger);
+            return View("SatisGetir", deger);
         }
 
         public ActionResult SatisGuncelle(SatisHareket p)
@@ -132,5 +132,12 @@ namespace MvcOnlineTicariOtomasyon.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult SatisDetay(int id)
+        {
+            var degerler=c.SatisHarekets.Where(x=>x.Satisid==id).ToList();
+            return View(degerler);
+        }
+
     }
 }
