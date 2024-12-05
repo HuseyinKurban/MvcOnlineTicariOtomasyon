@@ -18,6 +18,7 @@
         <th>Satış Fiyat</th>
         <th>Kategori</th>
         <th>Görsel</th>
+        <th>Detay</th>
         <th>Güncelle</th>
         <th>Sil</th>
     </tr>
@@ -32,7 +33,8 @@
             <td>@item.AlisFiyat</td>
             <td>@item.SatisFiyat</td>
             <td>@item.Kategori.KategoriAd</td>
-            <td>@item.UrunGorsel</td>
+            <td><img src="@item.UrunGorsel" style="height:130px;" /></td>
+            <td><a href="/UrunDetay/Index/@item.Urunid" class="btn btn-info">Detay</a></td>
             <td><a href="/Urun/UrunGetir/@item.Urunid" class="btn btn-success">Güncelle</a></td>
             <td><a href="/Urun/UrunSil/@item.Urunid" class="btn btn-danger">Sil</a></td>
         </tr>

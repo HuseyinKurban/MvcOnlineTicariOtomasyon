@@ -160,6 +160,7 @@
     <Compile Include="Models\Siniflar\SatisHareket.cs" />
     <Compile Include="Models\Siniflar\UDetay.cs" />
     <Compile Include="Models\Siniflar\Urun.cs" />
+    <Compile Include="Models\Siniflar\UrunDetayList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

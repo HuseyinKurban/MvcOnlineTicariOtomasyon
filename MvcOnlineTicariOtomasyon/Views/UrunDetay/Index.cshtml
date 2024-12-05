@@ -1,4 +1,4 @@
-﻿
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.UrunDetayList
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
@@ -46,17 +46,17 @@
                                 <div class="col-12">
                                     <img src="@x.UrunGorsel" class="product-image" alt="Product Image">
                                 </div>
-                                <div class="col-12 product-image-thumbs">
+                                @*<div class="col-12 product-image-thumbs">
                                     <div class="product-image-thumb active"><img src="~/AdminLTE-3.0.4/dist/img/prod-1.jpg" alt="Product Image"></div>
                                     <div class="product-image-thumb"><img src="~/AdminLTE-3.0.4/dist/img/prod-2.jpg" alt="Product Image"></div>
                                     <div class="product-image-thumb"><img src="~/AdminLTE-3.0.4/dist/img/prod-3.jpg" alt="Product Image"></div>
                                     <div class="product-image-thumb"><img src="~/AdminLTE-3.0.4/dist/img/prod-4.jpg" alt="Product Image"></div>
                                     <div class="product-image-thumb"><img src="~/AdminLTE-3.0.4/dist/img/prod-5.jpg" alt="Product Image"></div>
-                                </div>
+                                </div>*@
                             </div>
                             <div class="col-12 col-sm-6">
                                 <h3 class="my-3">@x.UrunAd</h3>
-                                <p>2020 yılı itibarıyla aldığı ödüller ve müşteri memnuniyet oranı oldukça yüksek olan buzdolabımızın fiyat performans karşılaştırması da gayet tatmin edici düzeyde olup doğa dostu ve A++ enerji birimlidir.</p>
+                                <p>2024 yılı itibarıyla aldığı ödüller ve müşteri memnuniyet oranı oldukça yüksek olan buzdolabımızın fiyat performans karşılaştırması da gayet tatmin edici düzeyde olup doğa dostu ve A++ enerji birimlidir.</p>
                                 <hr>
                                 <h4>Renk Seçimi</h4>
                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -133,7 +133,7 @@
                                     </div>
                                     <div class="btn btn-default btn-lg btn-flat">
                                         <i class="fas fa-heart fa-lg mr-2"></i>
-                                        Add to Wishlist
+                                        Favorilere Ekle
                                     </div>
                                 </div>
                                 <div class="mt-4 product-share">
