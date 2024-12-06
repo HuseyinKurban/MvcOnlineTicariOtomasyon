@@ -2865,6 +2865,7 @@
     <Content Include="Views\istatistik\SehirTablosu.cshtml" />
     <Content Include="Views\istatistik\KategoriTablosu.cshtml" />
     <Content Include="Views\istatistik\Partial1.cshtml" />
+    <Content Include="Views\Personel\PersonelListe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

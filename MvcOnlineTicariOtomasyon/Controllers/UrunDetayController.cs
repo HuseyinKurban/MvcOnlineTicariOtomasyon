@@ -17,6 +17,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         {
             cs.Deger1=c.Uruns.Where(x=>x.Urunid==id).ToList();
             cs.Deger2=c.UDetays.Where(x=>x.UDetayid==id).ToList();
+           
             return View(cs);
         }
     }
