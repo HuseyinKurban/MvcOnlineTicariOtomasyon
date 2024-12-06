@@ -74,14 +74,44 @@ namespace MvcOnlineTicariOtomasyon.Controllers
 
         public ActionResult KolayTablolar()
         {
+            return View();
+        }
+
+        public ActionResult SehirTablosu()
+        {
             var sorgu = from x in c.Carilers
                         group x by x.CariSehir into g
-                        select new SinifGrup
+                        select new MusteriSehir
                         {
                             Sehir = g.Key,
                             Sayi = g.Count()
                         };
             return View(sorgu.ToList());
         }
+
+        public ActionResult KategoriTablosu()
+        {
+            var sorgu = from x in c.Uruns
+                        group x by x.Kategori.KategoriAd into g
+                        select new KategoriSayisi
+                        {
+                            Kategori = g.Key,
+                            Sayi = g.Count()
+                        };
+            return View(sorgu.ToList());
+        }
+
+        public PartialViewResult Partial1()
+        {
+            var sorgu = from x in c.Personels
+                        group x by x.Departman.DepartmanAd into g
+                        select new PersonelDepartman
+                        {
+                            Departman = g.Key,
+                            Sayi = g.Count()
+                        };
+            return PartialView(sorgu.ToList());
+        }
+
     }
 }

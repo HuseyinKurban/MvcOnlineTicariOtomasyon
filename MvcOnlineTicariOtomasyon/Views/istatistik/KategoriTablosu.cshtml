@@ -1,0 +1,98 @@
+﻿@model IEnumerable<MvcOnlineTicariOtomasyon.Models.Siniflar.KategoriSayisi>
+@{
+    ViewBag.Title = "KategoriTablosu";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    int count = 0;
+}
+<br />
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Kategori Tablosu</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Kategori Adı</th>
+                        <th>Progress Bar</th>
+                        <th style="width: 40px">Oran</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.Kategori</td>
+                            <td>
+                                @if (item.Sayi <= 10)
+                                {
+                                    <div class="progress progress-xs">
+                                        <div class="progress-bar progress-bar-danger" style="width: @item.Sayi%"></div>
+                                    </div>
+                                }
+                                @if (item.Sayi > 10 && item.Sayi <= 20)
+                                {
+                                    <div class="progress progress-xs">
+                                        <div class="progress-bar bg-warning" style="width: @item.Sayi%"></div>
+                                    </div>
+                                }
+                                @if (item.Sayi > 20 && item.Sayi <= 30)
+                                {
+                                    <div class="progress progress-xs">
+                                        <div class="progress-bar bg-success" style="width: @item.Sayi%"></div>
+                                    </div>
+                                }
+                                @if (item.Sayi > 30)
+                                {
+                                    <div class="progress progress-xs">
+                                        <div class="progress-bar bg-info" style="width: @item.Sayi%"></div>
+                                    </div>
+                                }
+                            </td>
+                            <td>
+                                @if (item.Sayi <= 10)
+                                {
+                                    <span class="badge bg-primary" style="color:white">@item.Sayi</span>
+                                }
+                                @if (item.Sayi > 10 && item.Sayi <= 20)
+                                {
+                                    <span class="badge bg-warning">@item.Sayi</span>
+                                }
+                                @if (item.Sayi > 20 && item.Sayi <= 30)
+                                {
+                                    <span class="badge bg-success" style="color:white">@item.Sayi</span>
+                                }
+                                @if (item.Sayi > 30)
+                                {
+                                    <span class="badge bg-info" style="color:white">@item.Sayi</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+        <!-- /.card-body -->
+        @*<div class="card-footer clearfix">
+                <ul class="pagination pagination-sm m-0 float-right">
+                    <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                </ul>
+            </div>*@
+    </div>
+    <!-- /.card -->
+
+    
+    <!-- /.card -->
+</div>
+

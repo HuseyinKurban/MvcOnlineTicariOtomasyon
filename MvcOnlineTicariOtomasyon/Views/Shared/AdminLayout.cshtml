@@ -22,11 +22,11 @@
         </button><!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
             @*<div class="input-group">
-                <input class="form-control" type="text" placeholder="Aranacak Kelimeyi Giriniz..." aria-label="Search" aria-describedby="basic-addon2" />
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
-                </div>
-            </div>*@
+                    <input class="form-control" type="text" placeholder="Aranacak Kelimeyi Giriniz..." aria-label="Search" aria-describedby="basic-addon2" />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>*@
         </form>
         <!-- Navbar-->
         <ul class="navbar-nav ml-auto ml-md-0">
@@ -79,17 +79,47 @@
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                 </a>
                                 <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="login.html">Giriş Yap</a><a class="nav-link" href="register.html">Kayıt Ol</a><a class="nav-link" href="password.html">Şifremi Unuttum</a></nav>
+                                    <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="#">Giriş Yap</a><a class="nav-link" href="#">Kayıt Ol</a><a class="nav-link" href="password.html">Şifremi Unuttum</a></nav>
                                 </div>
                                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
                                     Hata Sayfaları
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                 </a>
                                 <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="401.html">401 Page</a><a class="nav-link" href="404.html">404 Page</a><a class="nav-link" href="500.html">500 Page</a></nav>
+                                    <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="#">401 Page</a><a class="nav-link" href="#">404 Page</a><a class="nav-link" href="#">500 Page</a></nav>
                                 </div>
                             </nav>
                         </div>
+
+                        <div class="sb-sidenav-menu-heading">Tablolar</div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages1" aria-expanded="false" aria-controls="collapsePages">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Hızlı Bakış Tabloları
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages1" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="/istatistik/SehirTablosu">
+                                    Müşteri - Sehir 
+                                </a>
+                            </nav>
+                        </div>
+                        <div class="collapse" id="collapsePages1" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="/istatistik/KategoriTablosu">
+                                    Kategori Tablosu
+                                </a>
+                            </nav>
+                        </div>
+                        <div class="collapse" id="collapsePages1" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="/istatistik/KolayTablolar">
+                                    Departman - Personel
+                                </a>
+                            </nav>
+                        </div>
+
+
                         <div class="sb-sidenav-menu-heading">Rapor & Fatura</div>
                         <a class="nav-link" href="/Satis/Index">
                             <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
@@ -146,10 +176,10 @@
                     <div class="d-flex align-items-center justify-content-between small">
                         <div class="text-muted">Copyright &copy; Hüseyin Kurban @DateTime.Now.Year</div>
                         @*<div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>*@
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>*@
                     </div>
                 </div>
             </footer>
