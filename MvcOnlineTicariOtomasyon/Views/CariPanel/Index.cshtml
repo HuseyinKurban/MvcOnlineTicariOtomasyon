@@ -1,10 +1,45 @@
-﻿
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Cariler
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_CariLayout.cshtml";
 }
-<br />
-@ViewBag.m
-<br />
-<h2>Index</h2>
 
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header text-center bg-primary text-white">
+            <h3>Cari Bilgilerinizi Güncelleyin</h3>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("Index2", "CariPanel", FormMethod.Post))
+            {
+                @Html.HiddenFor(x=>x.Cariid)
+                <div class="form-group mb-4">
+                    <label class="font-weight-bold">Mail Adresi:</label>
+                    <input type="text" class="form-control" value="@HttpContext.Current.User.Identity.Name" readonly />
+                </div>
+
+                <div class="form-group mb-4">
+                    <label class="font-weight-bold" for="CariAd">Ad:</label>
+                    @Html.TextBoxFor(x => x.CariAd, new { @class = "form-control", placeholder = "Adınızı girin" })
+                </div>
+
+                <div class="form-group mb-4">
+                    <label class="font-weight-bold" for="CariSoyad">Soyad:</label>
+                    @Html.TextBoxFor(x => x.CariSoyad, new { @class = "form-control", placeholder = "Soyadınızı girin" })
+                </div>
+
+                <div class="form-group mb-4">
+                    <label class="font-weight-bold" for="CariSehir">Şehir:</label>
+                    @Html.TextBoxFor(x => x.CariSehir, new { @class = "form-control", placeholder = "Yaşadığınız şehri girin" })
+                </div>
+
+                <div class="form-group mb-4">
+                    <label class="font-weight-bold" for="CariSifre">Şifre:</label>
+                    @Html.PasswordFor(x => x.CariSifre, new { @class = "form-control", placeholder = "Yeni şifrenizi girin" })
+                </div>
+
+                <button type="submit" class="btn btn-warning btn-block py-2 mt-4">Güncelle</button>
+            }
+        </div>
+    </div>
+</div>
