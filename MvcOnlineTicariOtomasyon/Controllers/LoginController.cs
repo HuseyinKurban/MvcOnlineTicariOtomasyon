@@ -11,7 +11,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
     public class LoginController : Controller
     {
         // GET: Login
-        Context c=new Context();
+        Context c = new Context();
 
         public ActionResult Index()
         {
@@ -33,15 +33,15 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return PartialView();
         }
         [HttpGet]
-        public ActionResult PartialCariLogin()
+        public ActionResult CariLogin()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult PartialCariLogin(Cariler p)
+        public ActionResult CariLogin(Cariler p)
         {
-           var bilgiler=c.Carilers.FirstOrDefault(x=>x.CariMail==p.CariMail && x.CariSifre==p.CariSifre);
+            var bilgiler = c.Carilers.FirstOrDefault(x => x.CariMail == p.CariMail && x.CariSifre == p.CariSifre);
 
             if (bilgiler != null)
             {
@@ -55,5 +55,27 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult PersonelLogin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult PersonelLogin(Admin p)
+        {
+            var bilgiler = c.Admins.FirstOrDefault(x => x.KullaniciAd == p.KullaniciAd && x.Sifre == p.Sifre);
+            if (bilgiler != null)
+            {
+                FormsAuthentication.SetAuthCookie(bilgiler.KullaniciAd, false);
+                Session["KullaniciAdi"] = bilgiler.KullaniciAd.ToString();
+                return RedirectToAction("Index", "Kategori");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+
+        }
     }
 }
