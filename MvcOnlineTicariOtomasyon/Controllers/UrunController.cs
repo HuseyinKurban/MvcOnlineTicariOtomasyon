@@ -14,9 +14,10 @@ namespace MvcOnlineTicariOtomasyon.Controllers
 
         Context c = new Context();
 
-        public ActionResult Index(int sayfa=1)
+        public ActionResult Index(string p, int sayfa = 1)
         {
-            var values = c.Uruns.Where(x => x.Durum == true).ToList().ToPagedList(sayfa,10);
+
+            var values = c.Uruns.Where(x => (p == null || x.UrunAd.Contains(p)) && x.Durum == true).ToList().ToPagedList(sayfa, 10);
             return View(values);
         }
 
@@ -26,9 +27,9 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             List<SelectListItem> deger1 = (from x in c.Kategoris.ToList()
                                            select new SelectListItem
                                            {
-                                               Text=x.KategoriAd,
-                                               Value=x.Kategoriid.ToString()
-                                           } ).ToList();
+                                               Text = x.KategoriAd,
+                                               Value = x.Kategoriid.ToString()
+                                           }).ToList();
             ViewBag.dgr1 = deger1;
             return View();
         }
@@ -58,11 +59,11 @@ namespace MvcOnlineTicariOtomasyon.Controllers
                                                Value = x.Kategoriid.ToString()
                                            }).ToList();
             ViewBag.dgr1 = deger1;
-            var urundeger=c.Uruns.Find(id);
+            var urundeger = c.Uruns.Find(id);
             return View("UrunGetir", urundeger);
         }
 
-        
+
         public ActionResult UrunGuncelle(Urun p)
         {
             var u = c.Uruns.Find(p.Urunid);
@@ -70,7 +71,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             u.Marka = p.Marka;
             u.Stok = p.Stok;
             u.AlisFiyat = p.AlisFiyat;
-            u.SatisFiyat= p.SatisFiyat;
+            u.SatisFiyat = p.SatisFiyat;
             u.Durum = p.Durum;
             u.UrunGorsel = p.UrunGorsel;
             u.Kategoriid = p.Kategoriid;
@@ -80,7 +81,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
 
         public ActionResult UrunListesi()
         {
-            var degerler=c.Uruns.ToList();
+            var degerler = c.Uruns.ToList();
             return View(degerler);
         }
 

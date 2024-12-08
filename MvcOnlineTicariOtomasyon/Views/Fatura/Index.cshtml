@@ -12,8 +12,7 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>Seri No</th>
-            <th>Sıra No</th>
+            <th>Seri Sıra No</th>
             <th>Vergi Dairesi</th>
             <th>Tarih</th>
             <th>Saat</th>
@@ -30,8 +29,7 @@
             count++;
             <tr>
                 <td>@count</td>
-                <td>@item.FaturaSeriNo</td>
-                <td>@item.FaturaSıraNo</td>
+                <td>@item.FaturaSeriNo @item.FaturaSıraNo</td>
                 <td>@item.VergiDairesi</td>
                 <td>@item.Tarih.ToShortDateString()</td>
                 <td>@item.Saat</td>

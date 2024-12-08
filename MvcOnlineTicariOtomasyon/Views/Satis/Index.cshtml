@@ -3,12 +3,13 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
+    int count = 0;
 }
 <br />
 <table id="tbl1" class="table table-bordered" style="margin-top:20px">
     <thead>
         <tr>
-            <th>ID</th>
+            <th>#</th>
             <th>Ürün</th>
             <th>Cari</th>
             <th>Personel</th>
@@ -22,8 +23,9 @@
     </thead>
     @foreach (var k in Model)
     {
+        count++;
         <tr>
-            <td>@k.Satisid</td>
+            <td>@count</td>
             <td>@k.Urun.UrunAd</td>
             <td>@k.Cariler.CariAd @k.Cariler.CariSoyad</td>
             <td>@k.Personel.PersonelAd @k.Personel.PersonelSoyad</td>

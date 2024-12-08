@@ -88,6 +88,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return View(values);
         }
 
+
         [HttpGet]
         public ActionResult YeniKalem()
         {

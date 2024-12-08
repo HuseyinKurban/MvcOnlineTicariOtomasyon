@@ -4,6 +4,7 @@
     ViewBag.Title = "Siparislerim";
     Layout = "~/Views/Shared/_CariLayout.cshtml";
     int count = 0;
+    decimal tutar = 0;
 }
 
 
@@ -23,11 +24,13 @@
                         <th>Toplam</th>
                         <th>Tarih</th>
                     </tr>
+
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
                         count++;
+                        tutar += item.ToplamTutar;
                         <tr>
                             <td>@count</td>
                             <td>@item.Urun.UrunAd</td>
@@ -36,9 +39,15 @@
                             <td>@item.ToplamTutar.ToString("C2")</td>
                             <td>@item.Tarih</td>
                         </tr>
+
                     }
+
                 </tbody>
             </table>
+            <div class="alert alert-info text-center">
+                <h4 class="mb-0">Toplam Tutar:</h4>
+                <h2 class="font-weight-bold">@tutar.ToString("C2")</h2>
+            </div>
         </div>
     </div>
 </div>

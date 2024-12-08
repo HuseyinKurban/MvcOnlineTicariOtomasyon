@@ -8,6 +8,19 @@
     int count = (Model.PageNumber - 1) * Model.PageSize;
 }
 
+@using (Html.BeginForm("Index", "Urun", FormMethod.Get))
+{
+    <div class="search-form">
+        <br />
+        <div class="form-group">
+            @Html.TextBox("p",null, new { @class = "form-control", placeholder = "Ürün adı girin...", style = "width: 500px;" })
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Ara</button>
+        </div>
+    </div>
+}
+
 <table class="table table-bordered" style="margin-top:20px;">
     <tr>
         <th>#</th>
