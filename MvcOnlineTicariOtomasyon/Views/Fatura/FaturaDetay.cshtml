@@ -4,14 +4,48 @@
     ViewBag.Title = "FaturaDetay";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
     int count = 0;
+    decimal toplamtutar = 0;
 }
 
 <br />
-<h2>Fatura Detay</h2>
+<h2 class="text-center">Fatura Detay</h2>
 <br />
-<ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">Teslim Alan : @ViewBag.Musteri</li>
+<ol class="breadcrumb mb-4" style="background-color: #e9ecef; border-radius: 5px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+    <li class="breadcrumb-item">
+        <a href="/Fatura/Index" class="text-decoration-none text-primary">
+            <i class="fas fa-arrow-left"></i>
+            Geri Dön
+        </a>
+    </li>
+    <li class="breadcrumb-item active text-dark font-weight-bold">
+        <i class="fas fa-user-circle"></i>
+        Fatura Sahibi: <span class="text-primary">@ViewBag.Musteri</span>
+    </li>
 </ol>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card border-info">
+            <div class="card-header bg-info text-white text-center">
+                <strong>Toplam Tutar</strong>
+            </div>
+            <div class="card-body text-center">
+                <h4 class="font-weight-bold">@ViewBag.ftoplam</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card border-success">
+            <div class="card-header bg-success text-white text-center">
+                <strong>Toplam Kalem Sayısı</strong>
+            </div>
+            <div class="card-body text-center">
+                <h4 class="font-weight-bold">@ViewBag.fkalem</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <table class="table table-bordered" style="margin-top:25px;">
     <tr>
@@ -27,6 +61,7 @@
     @foreach (var item in Model)
     {
         count++;
+        toplamtutar += item.Tutar;
         <tr>
             <td>@count</td>
             <td>@item.Aciklama</td>
@@ -38,4 +73,7 @@
     }
 </table>
 
-<a href="/Fatura/YeniKalem/@ViewBag.f" class="btn btn-warning">Yeni Kalem Girişi</a>
+<div class="text-center mt-4">
+    <a href="/Fatura/YeniKalem/@ViewBag.f" class="btn btn-warning btn-lg">Yeni Kalem Girişi</a>
+</div>
+

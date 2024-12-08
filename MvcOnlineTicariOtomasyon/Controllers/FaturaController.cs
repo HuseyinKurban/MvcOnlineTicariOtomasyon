@@ -84,6 +84,12 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             var fatura = c.Faturalars.Where(x => x.Faturaid == id).Select(y => y.Faturaid).FirstOrDefault();
             ViewBag.f = fatura;
 
+            var ftoplam=c.FaturaKalems.Where(x=>x.Faturaid==id).Sum(y=>y.Tutar).ToString("C2");
+            ViewBag.ftoplam = ftoplam;
+
+            var fkalem=c.FaturaKalems.Where(x => x.Faturaid == id).Count();
+            ViewBag.fkalem = fkalem;
+
             var values = c.FaturaKalems.Where(x => x.Faturaid == id).ToList();
             return View(values);
         }
