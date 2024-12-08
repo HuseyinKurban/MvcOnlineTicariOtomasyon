@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
-    int count = 0;
 }
 
 <br />
@@ -11,33 +10,32 @@
 <table id="tbl1" class="table table-bordered" style="margin-top:25px;">
     <thead>
         <tr>
-            <th>#</th>
             <th>Seri Sıra No</th>
-            <th>Vergi Dairesi</th>
-            <th>Tarih</th>
-            <th>Saat</th>
+            <th>Tarih - Saat</th>
             <th>Toplam</th>
-            <th>Teslim Eden</th>
-            <th>Teslim Alan</th>
+            <th>Fatura Sahibi</th>
             <th>Detaylar</th>
+            <th>Popup Liste</th>
+            <th>Yeni Kalem</th>
             <th>Güncelle</th>
 
         </tr>
         </thead>
         @foreach (var item in Model)
         {
-            count++;
             <tr>
-                <td>@count</td>
                 <td>@item.FaturaSeriNo @item.FaturaSıraNo</td>
-                <td>@item.VergiDairesi</td>
-                <td>@item.Tarih.ToShortDateString()</td>
-                <td>@item.Saat</td>
+                <td>@item.Tarih.ToShortDateString() @item.Saat</td>
                 <td>@item.Toplam.ToString("C2")</td>
-                <td>@item.TeslimEden</td>
                 <td>@item.TeslimAlan</td>
                 <td><a href="/Fatura/FaturaDetay/@item.Faturaid" class="btn btn-info">Detaylar</a></td>
-                <td><a href="/Fatura/FaturaGetir/@item.Faturaid" class="btn btn-success">Güncelle</a></td>
+                <td><a href="#" class="btn btn-default" style="background-color: #4CAF50; color: white;">Popup</a></td>
+                <td><a href="#" class="btn btn-default" style="background-color: #9C27B0; color: white;">Yeni Kalem</a></td>
+                <td><a href="/Fatura/FaturaGetir/@item.Faturaid" class="btn btn-warning">Güncelle</a>
+
+
+
+
 
 
             </tr>
