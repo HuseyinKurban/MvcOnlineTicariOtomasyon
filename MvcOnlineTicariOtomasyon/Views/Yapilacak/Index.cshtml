@@ -69,7 +69,7 @@
                                 <p>Ürün Sayısı</p>
                             </div>
                             <div class="icon">
-                                
+
                                 <i class="ion ion-bag"></i>
                             </div>
 
@@ -154,11 +154,11 @@
                                             <!-- todo text -->
                                             <span class="text">@item.Baslik</span>
                                             <!-- Emphasis label -->
-                                            <small class="badge badge-danger"><i class="far fa-clock"></i>Timer</small>
+                                            @*<small class="badge badge-danger"><i class="far fa-clock"></i>Timer</small>*@
                                             <!-- General tools such as edit or delete-->
                                             <div class="tools">
                                                 <i class="fas fa-edit"></i>
-                                                <i class="fas fa-trash-alt"></i>
+                                                <a href="/Yapilacak/YapilacakSil/@item.Yapilacakid"><i class="fas fa-trash-alt"></i></a>
                                             </div>
                                         </li>
                                     }
@@ -166,7 +166,7 @@
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer clearfix">
-                                <button type="button" class="btn btn-info float-right"><i class="fas fa-plus"></i> Yapılacak Ekle</button>
+                                <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#Modal1"><i class="fas fa-plus"></i> Yapılacak Ekle</button>
                             </div>
                         </div>
                         <!-- /.card -->
@@ -179,6 +179,24 @@
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->
+    </div>
+
+    <div class="modal" id="Modal1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Popup Ekranı</h2>
+                </div>
+                <div class="modal-body">
+                    <form class="form-group" method="post" action="/Yapilacak/YapilacakEkle">
+                        <label>Açıklama Ekleyiniz</label>
+                        <textarea name="Baslik" id="Baslik" class="form-control" rows="5"></textarea>
+                        <br />
+                        <button class="btn btn-primary">Ekle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- jQuery -->

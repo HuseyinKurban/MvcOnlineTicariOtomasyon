@@ -31,5 +31,28 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return View(deger);
         }
 
+        [HttpGet]
+        public ActionResult YapilacakEkle()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult YapilacakEkle(Yapilacak p)
+        {
+            p.Durum = false;
+            c.Yapilacaks.Add(p);
+            c.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult YapilacakSil(int id)
+        {
+            var values = c.Yapilacaks.Find(id);
+            c.Yapilacaks.Remove(values);
+            c.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }

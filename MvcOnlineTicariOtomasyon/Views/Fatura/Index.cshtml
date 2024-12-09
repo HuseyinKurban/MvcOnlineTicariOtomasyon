@@ -15,42 +15,80 @@
             <th>Toplam</th>
             <th>Fatura Sahibi</th>
             <th>Detaylar</th>
-            <th>Popup Liste</th>
+            <th>Popupta Göster</th>
             <th>Yeni Kalem</th>
             <th>Güncelle</th>
 
         </tr>
-        </thead>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.FaturaSeriNo @item.FaturaSıraNo</td>
-                <td>@item.Tarih.ToShortDateString() @item.Saat</td>
-                <td>@item.Toplam.ToString("C2")</td>
-                <td>@item.TeslimAlan</td>
-                <td><a href="/Fatura/FaturaDetay/@item.Faturaid" class="btn btn-info">Detaylar</a></td>
-                <td><a href="#" class="btn btn-default" style="background-color: #4CAF50; color: white;">Popup</a></td>
-                <td><a href="#" class="btn btn-default" style="background-color: #9C27B0; color: white;">Yeni Kalem</a></td>
-                <td><a href="/Fatura/FaturaGetir/@item.Faturaid" class="btn btn-warning">Güncelle</a>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.FaturaSeriNo @item.FaturaSıraNo</td>
+            <td>@item.Tarih.ToShortDateString() @item.Saat</td>
+            <td>@item.Toplam.ToString("C2")</td>
+            <td>@item.TeslimAlan</td>
+            <td><a href="/Fatura/FaturaDetay/@item.Faturaid" class="btn btn-info">Detaylar</a></td>
+            <td>
+                <a href="#" class="btn btn-default popup-btn"
+                   data-fatura-id="@item.Faturaid"
+                   data-fatura-seri-no="@item.FaturaSeriNo"
+                   data-tarih="@item.Tarih.ToShortDateString()"
+                   data-saat="@item.Saat"
+                   data-vergi-dairesi="@item.VergiDairesi"
+                   data-toplam="@item.Toplam"
+                   data-teslim-eden="@item.TeslimEden"
+                   data-teslim-alan="@item.TeslimAlan"
+                   style="background-color: #4CAF50; color: white;">Popup</a>
+            </td>
+            <td><a href="/Fatura/FaturaGetir/@item.Faturaid" class="btn btn-warning">Güncelle</a>
 
-
-
-
-
-
-            </tr>
-        }
+        </tr>
+    }
 
 </table>
 
 <a href="/Fatura/FaturaEkle" class="btn btn-primary">Yeni Fatura Girişi</a>
 
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Popup Ekranı</h2>
+            </div>
+            <div class="modal-body">
+                <form class="form-group">
+                    <label>Fatura Seri No</label>
+                    <input type="text" name="FaturaSeriNo" id="FaturaSeriNo" class="form-control" disabled />
+                    <br />
+                    <label>Tarih</label>
+                    <input type="text" name="Tarih" id="Tarih" class="form-control" disabled />
+                    <br />
+                    <label>Saat</label>
+                    <input type="text" name="Saat" id="Saat" class="form-control" disabled />
+                    <br />
+                    <label>Vergi Dairesi</label>
+                    <input type="text" name="VergiDairesi" id="VergiDairesi" class="form-control" disabled />
+                    <br />
+                    <label>Toplam</label>
+                    <input type="text" name="Toplam" id="Toplam" class="form-control" disabled />
+                    <br />
+                    <label>Teslim Eden</label>
+                    <input type="text" name="TeslimEden" id="TeslimEden" class="form-control" disabled />
+                    <br />
+                    <label>Teslim Alan</label>
+                    <input type="text" name="TeslimAlan" id="TeslimAlan" class="form-control" disabled />
+                    <br />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-
-
 
 <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
 <link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
@@ -58,6 +96,35 @@
 <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
 
 <script>
+    $(document).ready(function () {
+        // When the Popup button is clicked
+        $('.popup-btn').on('click', function () {
+            // Retrieve data from the clicked button's data attributes
+            var faturaId = $(this).data('fatura-id');
+            var faturaSeriNo = $(this).data('fatura-seri-no');
+            var tarih = $(this).data('tarih');
+            var saat = $(this).data('saat');
+            var vergiDairesi = $(this).data('vergi-dairesi');
+            var toplam = $(this).data('toplam');
+            var teslimEden = $(this).data('teslim-eden');
+            var teslimAlan = $(this).data('teslim-alan');
+
+            // Set the modal input fields with the retrieved data
+            $('#FaturaSeriNo').val(faturaSeriNo);
+            $('#Tarih').val(tarih);
+            $('#VergiDairesi').val(vergiDairesi);
+            $('#Saat').val(saat);
+            $('#Toplam').val(toplam);
+            $('#TeslimEden').val(teslimEden);
+            $('#TeslimAlan').val(teslimAlan);
+
+            // Show the modal
+            $('#Modal1').modal('show');
+        });
+    });
+
+
+
     $('#tbl1').DataTable({
         paging: true,         // Enable pagination
         searching: true,      // Enable search
@@ -69,3 +136,4 @@
         }
     });
 </script>
+
