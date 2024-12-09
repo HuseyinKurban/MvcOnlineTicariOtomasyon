@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList.Mvc;
 using PagedList;
+using System.IO;
 
 
 namespace MvcOnlineTicariOtomasyon.Controllers
@@ -35,6 +36,22 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         [HttpPost]
         public ActionResult PersonelEkle(Personel p)
         {
+            //isteklerim arasında bir dosya mevcutsa
+            if(Request.Files.Count>0)
+            {
+                //dosya adini bu şekilde aldık
+                string dosyaadi=Path.GetFileName(Request.Files[0].FileName);
+                //dosya uzantisini aldık
+                string uzanti=Path.GetExtension(Request.Files[0].FileName);
+
+                string yol = "~/Image/" + dosyaadi + uzanti;
+                //almıs oldugumuz resmi klasör içine atıyoruz
+                //sunucu içerisindeki maplenen yol değişkenine
+                Request.Files[0].SaveAs(Server.MapPath(yol));
+
+                //veritabanına kaydetmek için
+                p.PersonelGorsel="/Image/"+dosyaadi+uzanti;
+            }
             c.Personels.Add(p);
             c.SaveChanges();
             return RedirectToAction("Index");
@@ -55,6 +72,23 @@ namespace MvcOnlineTicariOtomasyon.Controllers
 
         public ActionResult PersonelGuncelle(Personel p)
         {
+            //isteklerim arasında bir dosya mevcutsa
+            if (Request.Files.Count > 0)
+            {
+                //dosya adini bu şekilde aldık
+                string dosyaadi = Path.GetFileName(Request.Files[0].FileName);
+                //dosya uzantisini aldık
+                string uzanti = Path.GetExtension(Request.Files[0].FileName);
+
+                string yol = "~/Image/" + dosyaadi + uzanti;
+                //almıs oldugumuz resmi klasör içine atıyoruz
+                //sunucu içerisindeki maplenen yol değişkenine
+                Request.Files[0].SaveAs(Server.MapPath(yol));
+
+                //veritabanına kaydetmek için
+                p.PersonelGorsel = "/Image/" + dosyaadi + uzanti;
+            }
+
             var t=c.Personels.Find(p.Personelid);
             t.PersonelAd=p.PersonelAd;
             t.PersonelSoyad=p.PersonelSoyad;
