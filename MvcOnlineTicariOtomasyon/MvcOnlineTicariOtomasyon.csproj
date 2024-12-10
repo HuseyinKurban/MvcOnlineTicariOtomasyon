@@ -151,13 +151,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202412101900056_kargo.cs" />
-    <Compile Include="Migrations\202412101900056_kargo.Designer.cs">
-      <DependentUpon>202412101900056_kargo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202412101955093_kargo2.cs" />
-    <Compile Include="Migrations\202412101955093_kargo2.Designer.cs">
-      <DependentUpon>202412101955093_kargo2.cs</DependentUpon>
+    <Compile Include="Migrations\202412102008578_kargo.cs" />
+    <Compile Include="Migrations\202412102008578_kargo.Designer.cs">
+      <DependentUpon>202412102008578_kargo.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Siniflar\Admin.cs" />
@@ -2982,11 +2978,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202412101900056_kargo.resx">
-      <DependentUpon>202412101900056_kargo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202412101955093_kargo2.resx">
-      <DependentUpon>202412101955093_kargo2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202412102008578_kargo.resx">
+      <DependentUpon>202412102008578_kargo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

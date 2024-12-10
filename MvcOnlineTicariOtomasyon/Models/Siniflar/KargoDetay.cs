@@ -17,16 +17,18 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
         public string Aciklama { get; set; }
 
         [Column(TypeName = "varchar")]
+        [StringLength(100)]
+        public string Personel { get; set; }
+
+        [Column(TypeName = "varchar")]
+        [StringLength(100)]
+        public string Alici { get; set; }
+
+        [Column(TypeName = "varchar")]
         [StringLength(10)]
         public string TakipKodu { get; set; }
 
         public DateTime Tarih { get; set; }
-
-        public int Personelid { get; set; }
-        public virtual Personel Personel { get; set; }
-
-        public int Cariid { get; set; }
-        public virtual Cariler Cari { get; set; }
 
     }
 }

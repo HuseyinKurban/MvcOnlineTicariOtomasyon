@@ -11,7 +11,7 @@
     <div class="search-form">
         <br />
         <div class="form-group">
-            @Html.TextBox("p", null, new { @class = "form-control", placeholder = "Kargo Takip Numarasını giriniz...", style = "width: 500px;" })
+            @Html.TextBox("p", null, new { @class = "form-control", placeholder = "Kargo Takip Kodunu Giriniz...", style = "width: 500px;" })
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Ara</button>
@@ -24,6 +24,7 @@
         <th>#</th>
         <th>Personel</th>
         <th>Alici</th>
+        <th>Takip Kodu</th>
         <th>Tarih</th>
         <th>Detaylar</th>
 
@@ -33,9 +34,10 @@
         count++;
         <tr>
             <td>@count</td>
-            <td>@item.Personel.PersonelAd @item.Personel.PersonelSoyad</td>
-            <td>@item.Cari.CariAd @item.Cari.CariSoyad</td>
-            <td>@item.Tarih</td>
+            <td>@item.Personel </td>
+            <td>@item.Alici</td>
+            <td>@item.TakipKodu</td>
+            <td>@item.Tarih.ToShortDateString()</td>
             <td><a href="#" class="btn btn-warning">Detaylar</a></td>
         </tr>
     }
@@ -44,6 +46,34 @@
 
 
 
-<a href="/Kargo/YeniKargo" class="btn btn-primary">Yeni Kargo Girişi</a>
+<button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#Modal1">Yeni Kargo Ekle</button>
+
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Yeni Kargo Ekleme Ekranı</h2>
+            </div>
+            <div class="modal-body">
+                <form class="form-group" method="post" action="/Kargo/YeniKargo">
+                    <label>Personel Giriniz</label>
+                    <input type="text" name="Personel" id="Personel" class="form-control" />
+                    <br />
+                    <label>Alıcı Giriniz</label>
+                    <input type="text" name="Alici" id="Alici" class="form-control" />
+                    <br />
+                    <label>Tarih Giriniz</label>
+                    <input type="date" name="Tarih" id="Tarih" class="form-control" />
+                    <br />
+                    <label>Açıklama Giriniz</label>
+                    <textarea name="Aciklama" id="Aciklama" class="form-control" rows="5" style="max-height:150px;"></textarea>
+                    <br />
+                    <button class="btn btn-primary" id="btn1">Ekle</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 

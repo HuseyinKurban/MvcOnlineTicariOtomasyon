@@ -33,6 +33,5 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
 
         public bool Durum { get; set; }
         public ICollection<SatisHareket> SatisHarekets { get; set; }
-        public ICollection<KargoDetay> KargoDetays { get; set; }
     }
 }
