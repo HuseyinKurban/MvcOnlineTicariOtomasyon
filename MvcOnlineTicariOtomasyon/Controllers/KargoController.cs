@@ -38,5 +38,12 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult KargoDetay(string id)
+        {
+            ViewBag.Cari=c.KargoDetays.Where(x => x.TakipKodu == id).Select(x=>x.Alici).FirstOrDefault();
+            var values = c.KargoTakips.Where(x => x.Takipkodu == id).ToList();
+            return View(values);
+        }
+
     }
 }
