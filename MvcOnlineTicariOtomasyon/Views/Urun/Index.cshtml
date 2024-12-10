@@ -31,9 +31,11 @@
         <th>Satış Fiyat</th>
         <th>Kategori</th>
         <th>Görsel</th>
+        <th>Satış Yap</th>
         <th>Detay</th>
         <th>Güncelle</th>
         <th>Sil</th>
+
     </tr>
     @foreach (var item in Model)
     {
@@ -47,9 +49,11 @@
             <td>@item.SatisFiyat.ToString("C2")</td>
             <td>@item.Kategori.KategoriAd</td>
             <td><img src="@item.UrunGorsel" style="height:130px;" /></td>
+            <td><a href="/Urun/SatisYap/@item.Urunid" class="btn btn-warning">Satış Yap</a></td>
             <td><a href="/UrunDetay/Index/@item.Urunid" class="btn btn-info">Detay</a></td>
             <td><a href="/Urun/UrunGetir/@item.Urunid" class="btn btn-success">Güncelle</a></td>
             <td><a href="/Urun/UrunSil/@item.Urunid" class="btn btn-danger">Sil</a></td>
+
         </tr>
     }
 

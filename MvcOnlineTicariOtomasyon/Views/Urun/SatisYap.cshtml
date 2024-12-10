@@ -1,0 +1,62 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.SatisHareket
+@{
+    ViewBag.Title = "SatisYap";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2 class="text-center mb-4">Satış Yap</h2>
+
+<form class="form-group" method="post">
+
+    <div class="mb-3">
+        @Html.LabelFor(x => x.Urun, "Ürün", new { @class = "form-label" })
+        <input type="text" name="Urunid" value="@ViewBag.dgr1" class="form-control" readonly />
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(x => x.Personel, new { @class = "form-label" })
+        @Html.DropDownListFor(x => x.Personelid, (List<SelectListItem>)ViewBag.personel, new { @class = "form-control" })
+    </div>
+
+    <div class="mb-3">
+        @Html.Label("Cari", new { @class = "form-label" })
+        @Html.TextBoxFor(x => x.Cariid, new { @class = "form-control", placeholder = "Cari Seçin" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(x => x.Adet, new { @class = "form-label" })
+        <input type="number" name="Adet" id="txt1" class="form-control" value="0" onchange="sum();" min="0" />
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(x => x.Fiyat, new { @class = "form-label" })
+        <input type="text" name="Fiyat" value="@ViewBag.dgr2" id="txt2" onkeyup="sum();" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(x => x.ToplamTutar, new { @class = "form-label" })
+        <input type="text" name="ToplamTutar" id="txt3" value="0" class="form-control" readonly />
+    </div>
+
+    <div class="text-center">
+        <button class="btn btn-primary btn-lg" type="submit">Satış Yap</button>
+    </div>
+
+</form>
+<br />
+
+<script>
+    function sum() {
+        var sayi1 = parseFloat(document.getElementById('txt1').value.replace(",", "."));
+        var sayi2 = parseFloat(document.getElementById('txt2').value.replace(",", "."));
+
+        // veri yoksa 0 ata
+        if (isNaN(sayi1)) sayi1 = 0;
+        if (isNaN(sayi2)) sayi2 = 0;
+
+        var sonuc = sayi1 * sayi2;
+
+        // Sonucu iki ondalıklı olarak görüntüle, noktayı virgülle değiştir
+        document.getElementById('txt3').value = sonuc.toFixed(2).replace(".", ",");
+    }
+</script>
