@@ -1,6 +1,7 @@
 ﻿using MvcOnlineTicariOtomasyon.Models.Siniflar;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,11 +11,11 @@ namespace MvcOnlineTicariOtomasyon.Controllers
     public class istatistikController : Controller
     {
         // GET: istatistik
-        Context c=new Context();
+        Context c = new Context();
 
         public ActionResult Index()
         {
-            var deger1= c.Carilers.Count().ToString();
+            var deger1 = c.Carilers.Count().ToString();
             ViewBag.d1 = deger1;
 
             var deger2 = c.Uruns.Count().ToString();
@@ -23,10 +24,10 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             var deger3 = c.Personels.Count().ToString();
             ViewBag.d3 = deger3;
 
-            var deger4= c.Kategoris.Count().ToString();
+            var deger4 = c.Kategoris.Count().ToString();
             ViewBag.d4 = deger4;
 
-            var deger5 = c.Uruns.Sum(x=>x.Stok).ToString();
+            var deger5 = c.Uruns.Sum(x => x.Stok).ToString();
             ViewBag.d5 = deger5;
 
             var deger6 = c.Uruns.Select(x => x.Marka).Distinct().Count();
@@ -42,10 +43,10 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             ViewBag.d9 = deger9;
 
             //key burda seçilen alan yani marka
-            var deger10 = c.Uruns.GroupBy(x => x.Marka).OrderByDescending(z => z.Count()).Select(y=>y.Key).FirstOrDefault();
+            var deger10 = c.Uruns.GroupBy(x => x.Marka).OrderByDescending(z => z.Count()).Select(y => y.Key).FirstOrDefault();
             ViewBag.d10 = deger10;
 
-            var deger11 = c.Uruns.Count(x => x.UrunAd=="Buzdolabı").ToString();
+            var deger11 = c.Uruns.Count(x => x.UrunAd == "Buzdolabı").ToString();
             ViewBag.d11 = deger11;
 
             var deger12 = c.Uruns.Count(x => x.UrunAd == "Laptop").ToString(); ;
@@ -59,14 +60,14 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             //var deger20 =c.Uruns.Where(u=>u.Urunid==(c.SatisHarekets.GroupBy(x=>x.Urunid).OrderByDescending(x=>x.Count()).Select(y=>y.Key).FirstOrDefault())).Select(x=>x.UrunAd).FirstOrDefault().ToString();
             //ViewBag.d20 = deger20;
 
-            var deger14 = c.SatisHarekets.Sum(x=>x.ToplamTutar).ToString("C2");
+            var deger14 = c.SatisHarekets.Sum(x => x.ToplamTutar).ToString("C2");
             ViewBag.d14 = deger14;
 
             DateTime bugun = DateTime.Today;
-            var deger15 = c.SatisHarekets.Count(x=>x.Tarih==bugun).ToString();
+            var deger15 = c.SatisHarekets.Count(x => DbFunctions.TruncateTime(x.Tarih) == bugun).ToString();
             ViewBag.d15 = deger15;
 
-            var deger16 = c.SatisHarekets.Where(x => x.Tarih == bugun).Sum(y => (decimal?)y.ToplamTutar) ?? 0;
+            var deger16 = c.SatisHarekets.Where(x => DbFunctions.TruncateTime(x.Tarih) == bugun).Sum(y => (decimal?)y.ToplamTutar) ?? 0;
             ViewBag.d16 = deger16.ToString("C2");
 
             return View();

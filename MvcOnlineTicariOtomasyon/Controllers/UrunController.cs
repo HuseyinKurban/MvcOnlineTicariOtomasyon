@@ -84,8 +84,9 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             var degerler = c.Uruns.ToList();
             return View(degerler);
         }
+
         [HttpGet]
-        public ActionResult SatisYap(int id)
+        public ActionResult UrunSatisYap(int id)
         {
 
             List<SelectListItem> deger1 = (from x in c.Personels.ToList()
@@ -105,7 +106,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         }
 
         [HttpPost]
-        public ActionResult SatisYap(SatisHareket p)
+        public ActionResult UrunSatisYap(SatisHareket p)
         {
             p.Tarih = DateTime.Now;
             c.SatisHarekets.Add(p);
