@@ -114,7 +114,9 @@
                                             <span class="text">@item.Baslik</span>
                                             <div class="tools">
                                                 <i class="fas fa-edit"></i>
-                                                <a href="/Yapilacak/YapilacakSil/@item.Yapilacakid"><i class="fas fa-trash-alt"></i></a>
+                                                <a href="javascript:void(0);" class="delete-item" data-id="@item.Yapilacakid">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </a>
                                             </div>
                                         </li>
                                     }
@@ -164,6 +166,46 @@
                 $("form").submit();
             });
         });
+
+
+        $(document).ready(function () {
+            // Silme işlemine tıklandığında
+            $(".delete-item").click(function (e) {
+                e.preventDefault(); // Varsayılan işlemi engelle
+
+                var itemId = $(this).data("id"); // Veriyi al
+
+                swal({
+                    title: "Emin misiniz?",
+                    text: "Bu işlemi geri alamazsınız!",
+                    icon: "warning",
+                    buttons: ["İptal", "Sil"],
+                    dangerMode: true,
+                }).then((willDelete) => {
+                    if (willDelete) {
+
+                        
+                        swal("Silme işlemi başarıyla gerçekleşti", {
+                            icon: "success",
+                        });
+
+                        // 3 saniye sonra yönlendirme yapılacak
+                        setTimeout(function () {
+                            window.location.href = `/Yapilacak/YapilacakSil/${itemId}`;
+                        }, 3000); // 3000 milisaniye = 3 saniye
+
+                    } else {
+                        // Kullanıcı iptal etti
+                        swal("İşlem iptal edildi!", {
+                            icon: "info",
+                        });
+                    }
+                });
+            });
+        });
+
+
+
 
     </script>
 
