@@ -29,7 +29,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             cari.CariSoyad=p.CariSoyad;
             cari.CariSehir=p.CariSehir;
             cari.CariMail=p.CariMail;
-            cari.CariSifre=p.CariSifre;
+            cari.CariSifre =p.CariSifre;
             c.SaveChanges();
             return RedirectToAction("Index");
         }

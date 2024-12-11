@@ -141,6 +141,7 @@
     <Compile Include="Controllers\DepartmanController.cs" />
     <Compile Include="Controllers\FaturaController.cs" />
     <Compile Include="Controllers\GaleriController.cs" />
+    <Compile Include="Controllers\GrafikController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\istatistikController.cs" />
     <Compile Include="Controllers\KargoController.cs" />
@@ -171,10 +172,13 @@
     <Compile Include="Models\Siniflar\KargoTakip.cs" />
     <Compile Include="Models\Siniflar\Kategori.cs" />
     <Compile Include="Models\Siniflar\KategoriSayisi.cs" />
+    <Compile Include="Models\Siniflar\Mesajlar.cs" />
     <Compile Include="Models\Siniflar\Personel.cs" />
     <Compile Include="Models\Siniflar\PersonelDepartman.cs" />
     <Compile Include="Models\Siniflar\SatisHareket.cs" />
     <Compile Include="Models\Siniflar\MusteriSehir.cs" />
+    <Compile Include="Models\Siniflar\sinif1.cs" />
+    <Compile Include="Models\Siniflar\Sinif2.cs" />
     <Compile Include="Models\Siniflar\UDetay.cs" />
     <Compile Include="Models\Siniflar\Urun.cs" />
     <Compile Include="Models\Siniflar\UrunDetayList.cs" />
@@ -2941,6 +2945,13 @@
     <Content Include="Views\Kargo\Index.cshtml" />
     <Content Include="Views\Kargo\KargoDetay.cshtml" />
     <Content Include="Views\QR\Index.cshtml" />
+    <Content Include="Views\Grafik\Index.cshtml" />
+    <Content Include="Views\Grafik\Index2.cshtml" />
+    <Content Include="Views\Grafik\Index3.cshtml" />
+    <Content Include="Views\Grafik\Index4.cshtml" />
+    <Content Include="Views\Grafik\Index5.cshtml" />
+    <Content Include="Views\Grafik\Index6.cshtml" />
+    <Content Include="Views\Grafik\Index7.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
