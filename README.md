@@ -1,3 +1,9 @@
+# Ticari Otomasyon Projesi
+
+Bu proje, işletmelerin günlük operasyonlarını daha verimli hale getirmek amacıyla geliştirilmiş bir Ticari Otomasyon Sistemidir. Sistem, özellikle personel satış hareketlerini, kargo takip süreçlerini, fatura işlemlerini ve grafikler aracılığıyla istatistikleri takip etmeyi sağlayan bir altyapıya sahiptir. Ürün yönetimi, satış takibi, müşteri ilişkileri ve personel yönetimi gibi alanlarda kullanıcıya güçlü araçlar sunarak, işletmelerin verimliliğini artırmayı hedefler.
+Projenin amacı, içindeki tüm ticari süreçleri dijitalleştirerek verimliliği artırmak ve manuel işlem hatalarından kaynaklanan riskleri azaltmaktır. Sistem, ASP.NET MVC 5, MSSQL Server ve Entity Framework (Code First) gibi güçlü teknolojilerle geliştirilmiştir.
+
+
 # 🚀 Kullanılan Teknolojiler:
 - 💻 **ASP.NET MVC 5**
 - 🗄️ **MSSQL Server**
