@@ -9,6 +9,7 @@ using PagedList;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
+
     public class DepartmanController : Controller
     {
         // GET: Departman
@@ -19,7 +20,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             var values = c.Departmans.Where(x => x.Durum == true).ToList().ToPagedList(sayfa, 10);
             return View(values);
         }
-
+        [Authorize(Roles = "A")]
         [HttpGet]
         public ActionResult DepartmanEkle()
         {
