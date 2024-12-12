@@ -230,6 +230,7 @@
     <Content Include="AdminLTE-3.0.4\dist\img\credit\mestro.png" />
     <Content Include="AdminLTE-3.0.4\dist\img\credit\paypal.png" />
     <Content Include="AdminLTE-3.0.4\dist\img\credit\paypal2.png" />
+    <Content Include="AdminLTE-3.0.4\dist\img\credit\testt.jpg" />
     <Content Include="AdminLTE-3.0.4\dist\img\credit\visa.png" />
     <Content Include="AdminLTE-3.0.4\dist\img\default-150x150.png" />
     <Content Include="AdminLTE-3.0.4\dist\img\icons.png" />
@@ -2958,6 +2959,8 @@
     <Content Include="Views\CariPanel\YeniMesaj.cshtml" />
     <Content Include="Views\CariPanel\KargoTakip.cshtml" />
     <Content Include="Views\CariPanel\KargoDetay.cshtml" />
+    <Content Include="Views\CariPanel\Ayarlar.cshtml" />
+    <Content Include="Views\CariPanel\Duyurular.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
