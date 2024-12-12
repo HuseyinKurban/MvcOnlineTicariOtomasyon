@@ -29,6 +29,9 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             var toplamfiyat= c.SatisHarekets.Where(x => x.Cariid == mailid).Sum(y => (decimal?)y.ToplamTutar) ?? 0;
             ViewBag.Toplamfiyat = toplamfiyat.ToString("C2");
 
+            var toplamurun= c.SatisHarekets.Where(x => x.Cariid == mailid).Sum(y => (int?)y.Adet) ?? 0;
+            ViewBag.Toplamurun = toplamurun;
+
             return View(degerler);
         }
 
