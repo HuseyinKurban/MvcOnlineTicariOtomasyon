@@ -9,7 +9,6 @@ using System.Web.Security;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
-
     public class CariPanelController : Controller
     {
         // GET: CariPanel

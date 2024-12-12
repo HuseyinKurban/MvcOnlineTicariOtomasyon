@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
+    [AllowAnonymous]
     public class FaturaController : Controller
     {
         // GET: Fatura
@@ -126,5 +127,13 @@ namespace MvcOnlineTicariOtomasyon.Controllers
 
         }
 
+        public ActionResult Dinamik()
+        {
+            Sinif4 cs= new Sinif4();
+            cs.deger1=c.Faturalars.ToList();
+            cs.deger2=c.FaturaKalems.ToList();
+
+            return View(cs);
+        }
     }
 }

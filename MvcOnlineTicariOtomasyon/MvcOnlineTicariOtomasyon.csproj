@@ -139,6 +139,7 @@
     <Compile Include="Controllers\CariController.cs" />
     <Compile Include="Controllers\CariPanelController.cs" />
     <Compile Include="Controllers\DepartmanController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FaturaController.cs" />
     <Compile Include="Controllers\GaleriController.cs" />
     <Compile Include="Controllers\GrafikController.cs" />
@@ -179,6 +180,8 @@
     <Compile Include="Models\Siniflar\MusteriSehir.cs" />
     <Compile Include="Models\Siniflar\sinif1.cs" />
     <Compile Include="Models\Siniflar\Sinif2.cs" />
+    <Compile Include="Models\Siniflar\sinif3.cs" />
+    <Compile Include="Models\Siniflar\Sinif4.cs" />
     <Compile Include="Models\Siniflar\UDetay.cs" />
     <Compile Include="Models\Siniflar\Urun.cs" />
     <Compile Include="Models\Siniflar\UrunDetayList.cs" />
@@ -2961,6 +2964,11 @@
     <Content Include="Views\CariPanel\KargoDetay.cshtml" />
     <Content Include="Views\CariPanel\Ayarlar.cshtml" />
     <Content Include="Views\CariPanel\Duyurular.cshtml" />
+    <Content Include="Views\Error\PageError.cshtml" />
+    <Content Include="Views\Error\Page403.cshtml" />
+    <Content Include="Views\Error\Page400.cshtml" />
+    <Content Include="Views\Kategori\Deneme.cshtml" />
+    <Content Include="Views\Fatura\Dinamik.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

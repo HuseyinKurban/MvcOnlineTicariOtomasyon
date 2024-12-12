@@ -9,6 +9,7 @@ using PagedList;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
+
     public class CariController : Controller
     {
         // GET: Cari

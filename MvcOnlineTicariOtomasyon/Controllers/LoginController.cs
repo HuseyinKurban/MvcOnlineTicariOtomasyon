@@ -8,6 +8,7 @@ using System.Web.Security;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         // GET: Login
@@ -45,7 +46,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
 
             if (bilgiler != null)
             {
-                FormsAuthentication.SetAuthCookie(bilgiler.CariMail, true);
+                FormsAuthentication.SetAuthCookie(bilgiler.CariMail, false);
                 Session["CariMail"] = bilgiler.CariMail.ToString();
                 return RedirectToAction("Index", "CariPanel");
             }
@@ -66,7 +67,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             var bilgiler = c.Admins.FirstOrDefault(x => x.KullaniciAd == p.KullaniciAd && x.Sifre == p.Sifre);
             if (bilgiler != null)
             {
-                FormsAuthentication.SetAuthCookie(bilgiler.KullaniciAd, true);
+                FormsAuthentication.SetAuthCookie(bilgiler.KullaniciAd, false);
                 Session["KullaniciAdi"] = bilgiler.KullaniciAd.ToString();
                 return RedirectToAction("Index", "Kategori");
             }
