@@ -1,12 +1,15 @@
 ﻿using MvcOnlineTicariOtomasyon.Models.Siniflar;
 using System;
 using System.Collections.Generic;
+using System.EnterpriseServices;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
+
     public class CariPanelController : Controller
     {
         // GET: CariPanel
@@ -15,8 +18,17 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         public ActionResult Index()
         {
             var mail = (string)Session["CariMail"];
-            var degerler = c.Carilers.FirstOrDefault(x => x.CariMail == mail);
+            var degerler = c.Carilers.Where(x => x.CariMail == mail).ToList();
             ViewBag.m = mail;
+
+            var mailid=c.Carilers.Where(x=>x.CariMail==mail).Select(x=>x.Cariid).FirstOrDefault();
+
+            var toplamsatis=c.SatisHarekets.Where(x=>x.Cariid==mailid).Count();
+            ViewBag.Toplamsatis=toplamsatis;
+
+            var toplamfiyat= c.SatisHarekets.Where(x => x.Cariid == mailid).Sum(y => (decimal?)y.ToplamTutar) ?? 0;
+            ViewBag.Toplamfiyat = toplamfiyat.ToString("C2");
+
             return View(degerler);
         }
 
@@ -113,6 +125,30 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             c.Mesajlars.Add(p);
             c.SaveChanges();
             return RedirectToAction("GidenMesajlar");
+        }
+
+        public ActionResult KargoTakip(string p)
+        {
+            var k = from x in c.KargoDetays select x;
+            k = k.Where(y => y.TakipKodu.Contains(p));
+            return View(k.ToList());
+        }
+
+        public ActionResult KargoDetay(string id)
+        {
+            ViewBag.Cari = c.KargoDetays.Where(x => x.TakipKodu == id).Select(x => x.Alici).FirstOrDefault();
+            var values = c.KargoTakips.Where(x => x.Takipkodu == id).ToList();
+            return View(values);
+        }
+
+        public ActionResult LogOut()
+        {
+            //oturumdan cık
+            FormsAuthentication.SignOut();
+            //istekleri terket
+            Session.Abandon();
+            //beni logine geri yönlendir
+            return RedirectToAction("Index","Login");
         }
 
 
