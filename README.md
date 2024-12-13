@@ -48,6 +48,9 @@ Projenin amacı, içindeki tüm ticari süreçleri dijitalleştirerek verimlili�
 - **Kargo Takibi**: QR kodu girerek kargo durumunu takip edebilir.
 - **Mesajlaşma**: Diğer carilerle mesajlaşma işlemi yapabilir.
 
+## Veritabanı Şeması
+![image](https://github.com/user-attachments/assets/aa898906-148e-470b-a0ca-17fe5ef3b550)
+
 ## Login Ekranı Görselleri
 ![image](https://github.com/user-attachments/assets/24f78958-cb2a-4ec7-a9d2-8e414c1e10eb)
 ![image](https://github.com/user-attachments/assets/14c839d1-54d4-4cbb-aab1-b445dacc10d0)
