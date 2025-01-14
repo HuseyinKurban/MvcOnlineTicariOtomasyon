@@ -129,4 +129,3 @@ Projenin amacı, içindeki tüm ticari süreçleri dijitalleştirerek verimlili�
 
 
 
-
